@@ -60,15 +60,24 @@
 		</div>
 		<style>
 			:root {
-				--color-0: #a17e4e;
-				--color-1: #2E0249;
-				--color-2: #A91079;
-				--color-3: #FF577F;
-				--color-4: #FF7F3F;
-				--color-5: #2ea140;
-				--color-6: #E4AEC5;
-				--color-7: #9ADCFF;
-				--color-8: #65C18C;
+				--color-0: #0369a1;
+                --color-0-p: #e7f6fd;
+                --color-1: #874de0;
+                --color-1-p: #f4efff;
+                --color-2: #2f9074;
+                --color-2-p: #e8f8f3;
+                --color-3: #be123c;
+                --color-3-p: #ffe4e6;
+                --color-4: #b45309;
+                --color-4-p: #fef6e7;
+                --color-5: #73347f;
+                --color-5-p: #fdf3ff;
+                --color-6: #ab2f64;
+                --color-6-p: #fff3f8;
+                --color-7: #9ADCFF;
+                --color-7-p: #f1faff;
+                --color-8: #65C18C;
+                --color-8-p: #c3e9d3;
 			}
 			.sgu-tkb-table div {
 				box-shadow: 0px 0px 2px #e1d4d4;
@@ -302,6 +311,7 @@
 			${element.Thu + 1};
 			`
 			subject.style.setProperty('color', `var(${element.color})`)
+			subject.style.setProperty('background', `var(${element.color}-p)`)
 			subject.classList.add('cell-subject')
 			console.log(element.color)
 			table.appendChild(subject)
