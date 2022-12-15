@@ -79,7 +79,6 @@
                 height: 100%;
         	}
         	.sgu-tkb-table {
-                font-size: 15px;
         		margin-top: 5vh;
                 display: grid;
         		grid-template-columns: 5% repeat(7, 1fr) 5%;
