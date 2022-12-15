@@ -85,7 +85,7 @@
         		grid-template-rows: repeat(17, 1fr);
         		grid-column-gap: 1px;
         		grid-row-gap: 1px;
-        		height: 70vh;
+        		height: 700px;
         	}
             .cell-subject {
                 border-left: 1px solid;
