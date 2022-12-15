@@ -1,2 +1,1 @@
 # TKB-SGU
-# TKB-SGU
