@@ -5,7 +5,7 @@
 // @description  try to take over the world!
 // @author	   You
 // @match		http://thongtindaotao.sgu.edu.vn/default.aspx?page=thoikhoabieu&sta=1
-// @icon		 https://www.google.com/s2/favicons?sz=64&domain=edu.vn
+// @icon		 https://www.google.com/s2/favicons?sz=64&domain=sgu.edu.vn
 // @grant		none
 // ==/UserScript==
 ;(function () {
