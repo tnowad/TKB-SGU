@@ -5,7 +5,7 @@
 // @description  try to take over the world!
 // @author	   You
 // @match		http://thongtindaotao.sgu.edu.vn/default.aspx?page=thoikhoabieu&sta=1
-// @icon		 https://www.google.com/s2/favicons?sz=64&domain=sgu.edu.vn
+// @icon		 https://www.google.com/s2/favicons?sz=64&domain=edu.vn
 // @grant		none
 // ==/UserScript==
 ;(function () {
@@ -40,8 +40,6 @@
 			<div class="tiet div25">Tiết 11</div>
 			<div class="tiet div26">Tiết 12</div>
 			<div class="tiet div27">Tiết 13</div>
-			<div class="tiet div28">Tiết 14</div>
-			<div class="tiet div29">Tiết 15</div>
 			<div class="tiet div30">Tiết 1</div>
 			<div class="tiet div31">Tiết 2</div>
 			<div class="tiet div32">Tiết 3</div>
@@ -55,8 +53,6 @@
 			<div class="tiet div40">Tiết 11</div>
 			<div class="tiet div41">Tiết 12</div>
 			<div class="tiet div42">Tiết 13</div>
-			<div class="tiet div43">Tiết 14</div>
-			<div class="tiet div44">Tiết 15</div>
 		</div>
 		<style>
 			:root {
@@ -79,11 +75,15 @@
                 --color-8: #65C18C;
                 --color-8-p: #c3e9d3;
 			}
+            .sgu-tkb-table * {
+                padding: 0;
+                margin: 0;
+            }
 			.sgu-tkb-table div {
 				box-shadow: 0px 0px 2px #e1d4d4;
 				display:flex;
 				flex-direction: column;
-				justify-content: center;
+                justify-content: space-evenly;
 				align-items: center;
 				height: 100%;
 			}
@@ -91,7 +91,7 @@
 				margin-top: 5vh;
 				display: grid;
 				grid-template-columns: 5% repeat(7, 1fr) 5%;
-				grid-template-rows: repeat(17, 1fr);
+				grid-template-rows: repeat(15, 1fr);
 				grid-column-gap: 1px;
 				grid-row-gap: 1px;
 				height: 700px;
@@ -125,25 +125,25 @@
 				grid-area: 1 / 8 / 2 / 9;
 			}
 			.div8 {
-				grid-area: 17 / 2 / 18 / 3;
+				grid-area: 15 / 2 / 16 / 3;
 			}
 			.div9 {
-				grid-area: 17 / 3 / 18 / 4;
+				grid-area: 15 / 3 / 16 / 4;
 			}
 			.div10 {
-				grid-area: 17 / 4 / 18 / 5;
+				grid-area: 15 / 4 / 16 / 5;
 			}
 			.div11 {
-				grid-area: 17 / 5 / 18 / 6;
+				grid-area: 15 / 5 / 16 / 6;
 			}
 			.div12 {
-				grid-area: 17 / 6 / 18 / 7;
+				grid-area: 15 / 6 / 16 / 7;
 			}
 			.div13 {
-				grid-area: 17 / 7 / 18 / 8;
+				grid-area: 15 / 7 / 16 / 8;
 			}
 			.div14 {
-				grid-area: 17 / 8 / 18 / 9;
+				grid-area: 15 / 8 / 16 / 9;
 			}
 			.div15 {
 				grid-area: 2 / 1 / 3 / 2;
@@ -301,8 +301,9 @@
 		data.forEach((element) => {
 			let subject = document.createElement('div')
 			subject.innerHTML = `
-				<b>${element.TenMH}</b>
-				<br/>Phòng: ${element.Phong}
+				<h3>${element.TenMH}</h3>
+				<span>Phòng: ${element.Phong}</span>
+                ${element.TH ? `<span>Thực hành: ${element.TH}</span>` : ''}
 			`
 			subject.style = `
 			grid-area: ${parseInt(element.TietBD) + 1} /
@@ -313,14 +314,13 @@
 			subject.style.setProperty('color', `var(${element.color})`)
 			subject.style.setProperty('background', `var(${element.color}-p)`)
 			subject.classList.add('cell-subject')
-			console.log(element.color)
 			table.appendChild(subject)
 		})
 		let total = data.reduce(
 			(previous, current) => previous + parseInt(current.ST),
 			0,
 		)
-		for (let i = 0; i < 153 - total; i++) {
+		for (let i = 0; i < 12 * 8 - total - 1; i++) {
 			let temp = document.createElement('div')
 			temp.classList.add('cell-empty')
 			table.appendChild(temp)
