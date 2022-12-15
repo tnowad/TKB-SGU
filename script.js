@@ -1,5 +1,17 @@
-const templateTable = () => {
-	return `
+// ==UserScript==
+// @name         Thời khóa biểu SGU
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        http://thongtindaotao.sgu.edu.vn/default.aspx?page=thoikhoabieu&sta=1
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=edu.vn
+// @grant        none
+// ==/UserScript==
+;(function () {
+	'use strict'
+	const templateTable = () => {
+		return `
         <div class="sgu-tkb-table">
 	        <div class="thu div1">Thứ 2</div>
 	        <div class="thu div2">Thứ 3</div>
@@ -67,7 +79,9 @@ const templateTable = () => {
                 height: 100%;
         	}
         	.sgu-tkb-table {
-        		display: grid;
+                font-size: 15px;
+        		margin-top: 5vh;
+                display: grid;
         		grid-template-columns: 5% repeat(7, 1fr) 5%;
         		grid-template-rows: repeat(17, 1fr);
         		grid-column-gap: 1px;
@@ -214,112 +228,112 @@ const templateTable = () => {
         		grid-area: 16 / 9 / 17 / 10;
         	}
         </style>
-        
+
     `
-}
-
-const getData = () => {
-	const table = Array.from(document.querySelectorAll('.body-table tr'))
-	let data = []
-	table.forEach((element) => {
-		let subject = Array.from(element.querySelectorAll('td'))
-			.reduce((previous, current) => {
-				return previous + current.innerText + '|'
-			}, '')
-			.split('|')
-		subject = {
-			MaMH: subject[0],
-			TenMH: subject[1],
-			NhomMH: subject[2],
-			STC: subject[3],
-			MaLop: subject[4],
-			STCHP: subject[5],
-			KDK: subject[6],
-			TH: subject[7],
-			Thu: subject[8],
-			TietBD: subject[9],
-			ST: subject[10],
-			Phong: subject[11],
-			CBGV: subject[12],
-			color: '',
-		}
-		data.push(subject)
-	})
-	console.log(data)
-	return data
-}
-
-const renderHTML = (dataSubject) => {
-	let data = dataSubject
-	const table = document.querySelector('.sgu-tkb-table')
-	const Thu = {
-		Hai: 2,
-		Ba: 3,
-		Tư: 4,
-		Năm: 5,
-		Sáu: 6,
-		Bảy: 7,
 	}
 
-	data = data.map((value) => {
-		value.Thu = Thu[value.Thu]
-		return value
-	})
-
-	let index = 0
-	for (let i = 0; i < data.length; i++) {
-		let currentColor = data.find(
-			(value) => value.MaMH == data[i].MaMH && value.color != '',
-		)
-		data[i] = {
-			...data[i],
-			color: currentColor ? currentColor.color : `--color-${index++}`,
-		}
+	const getData = () => {
+		const table = Array.from(document.querySelectorAll('.body-table tr'))
+		let data = []
+		table.forEach((element) => {
+			let subject = Array.from(element.querySelectorAll('td'))
+				.reduce((previous, current) => {
+					return previous + current.innerText + '|'
+				}, '')
+				.split('|')
+			subject = {
+				MaMH: subject[0],
+				TenMH: subject[1],
+				NhomMH: subject[2],
+				STC: subject[3],
+				MaLop: subject[4],
+				STCHP: subject[5],
+				KDK: subject[6],
+				TH: subject[7],
+				Thu: subject[8],
+				TietBD: subject[9],
+				ST: subject[10],
+				Phong: subject[11],
+				CBGV: subject[12],
+				color: '',
+			}
+			data.push(subject)
+		})
+		return data
 	}
 
-	data.forEach((element) => {
-		let subject = document.createElement('div')
-		subject.innerHTML = `
+	const renderHTML = (dataSubject) => {
+		let data = dataSubject
+		const table = document.querySelector('.sgu-tkb-table')
+		const Thu = {
+			Hai: 2,
+			Ba: 3,
+			Tư: 4,
+			Năm: 5,
+			Sáu: 6,
+			Bảy: 7,
+		}
+
+		data = data.map((value) => {
+			value.Thu = Thu[value.Thu]
+			return value
+		})
+
+		let index = 0
+		for (let i = 0; i < data.length; i++) {
+			let currentColor = data.find(
+				(value) => value.MaMH == data[i].MaMH && value.color != '',
+			)
+			data[i] = {
+				...data[i],
+				color: currentColor ? currentColor.color : `--color-${index++}`,
+			}
+		}
+
+		data.forEach((element) => {
+			let subject = document.createElement('div')
+			subject.innerHTML = `
                 <b>${element.TenMH}</b>
                 <br/>Phòng: ${element.Phong}
             `
-		subject.style = `
-            grid-area: ${parseInt(element.TietBD) + 1} / 
-            ${element.Thu}/ 
-            ${parseInt(element.TietBD) + parseInt(element.ST) + 1}/ 
+			subject.style = `
+            grid-area: ${parseInt(element.TietBD) + 1} /
+            ${element.Thu}/
+            ${parseInt(element.TietBD) + parseInt(element.ST) + 1}/
             ${element.Thu + 1};
             `
-		subject.style.setProperty('color', `var(${element.color})`)
-		subject.classList.add('cell-subject')
-		console.log(element.color)
-		table.appendChild(subject)
-	})
-	let total = data.reduce(
-		(previous, current) => previous + parseInt(current.ST),
-		0,
-	)
-	for (let i = 0; i < 153 - total; i++) {
-		let temp = document.createElement('div')
-		temp.classList.add('cell-empty')
-		table.appendChild(temp)
+			subject.style.setProperty('color', `var(${element.color})`)
+			subject.classList.add('cell-subject')
+			console.log(element.color)
+			table.appendChild(subject)
+		})
+		let total = data.reduce(
+			(previous, current) => previous + parseInt(current.ST),
+			0,
+		)
+		for (let i = 0; i < 153 - total; i++) {
+			let temp = document.createElement('div')
+			temp.classList.add('cell-empty')
+			table.appendChild(temp)
+		}
 	}
-}
 
-const render = async () => {
-	const data = getData()
-	const table = document.createElement('div')
-	table.innerHTML = templateTable()
-	await document.querySelector('.navigate-base').appendChild(table)
-	renderHTML(data)
-}
-
-const autoStart = () => {
-	const button = document.querySelector(
-		'#ctl00_ContentPlaceHolder1_ctl00_rad_ThuTiet',
-	)
-	if (button.checked) {
-		render()
+	const render = async () => {
+		const data = getData()
+		const table = document.createElement('div')
+		table.innerHTML = templateTable()
+		await document.querySelector('.navigate-base').appendChild(table)
+		renderHTML(data)
 	}
-}
 
-autoStart()
+	const autoStart = () => {
+		const button = document.querySelector(
+			'#ctl00_ContentPlaceHolder1_ctl00_rad_ThuTiet',
+		)
+		if (button.checked) {
+			render()
+		}
+	}
+
+	autoStart()
+})()
