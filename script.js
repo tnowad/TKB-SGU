@@ -19,14 +19,12 @@
 			<div class="thu div4">Thứ 5</div>
 			<div class="thu div5">Thứ 6</div>
 			<div class="thu div6">Thứ 7</div>
-			<div class="thu div7">Chủ Nhật</div>
 			<div class="thu div8">Thứ 2</div>
 			<div class="thu div9">Thứ 3</div>
 			<div class="thu div10">Thứ 4</div>
 			<div class="thu div11">Thứ 5</div>
 			<div class="thu div12">Thứ 6</div>
 			<div class="thu div13">Thứ 7</div>
-			<div class="thu div14">Chủ Nhật</div>
 			<div class="tiet div15">Tiết 1</div>
 			<div class="tiet div16">Tiết 2</div>
 			<div class="tiet div17">Tiết 3</div>
