@@ -88,7 +88,7 @@
 			.sgu-tkb-table {
 				margin-top: 5vh;
 				display: grid;
-				grid-template-columns: 5% repeat(7, 1fr) 5%;
+				grid-template-columns: 5% repeat(6, 1fr) 5%;
 				grid-template-rows: repeat(15, 1fr);
 				grid-column-gap: 1px;
 				grid-row-gap: 1px;
@@ -189,49 +189,49 @@
 				grid-area: 16 / 1 / 17 / 2;
 			}
 			.div30 {
-				grid-area: 2 / 9 / 3 / 10;
+				grid-area: 2 / 8 / 3 / 9;
 			}
 			.div31 {
-				grid-area: 3 / 9 / 4 / 10;
+				grid-area: 3 / 8 / 4 / 9;
 			}
 			.div32 {
-				grid-area: 4 / 9 / 5 / 10;
+				grid-area: 4 / 8 / 5 / 9;
 			}
 			.div33 {
-				grid-area: 5 / 9 / 6 / 10;
+				grid-area: 5 / 8 / 6 / 9;
 			}
 			.div34 {
-				grid-area: 6 / 9 / 7 / 10;
+				grid-area: 6 / 8 / 7 / 9;
 			}
 			.div35 {
-				grid-area: 7 / 9 / 8 / 10;
+				grid-area: 7 / 8 / 8 / 9;
 			}
 			.div36 {
-				grid-area: 8 / 9 / 9 / 10;
+				grid-area: 8 / 8 / 9 / 9;
 			}
 			.div37 {
-				grid-area: 9 / 9 / 10 / 10;
+				grid-area: 9 / 8 / 10 / 9;
 			}
 			.div38 {
-				grid-area: 10 / 9 / 11 / 10;
+				grid-area: 10 / 8 / 11 / 9;
 			}
 			.div39 {
-				grid-area: 11 / 9 / 12 / 10;
+				grid-area: 11 / 8 / 12 / 9;
 			}
 			.div40 {
-				grid-area: 12 / 9 / 13 / 10;
+				grid-area: 12 / 8 / 13 / 9;
 			}
 			.div41 {
-				grid-area: 13 / 9 / 14 / 10;
+				grid-area: 13 / 8 / 14 / 9;
 			}
 			.div42 {
-				grid-area: 14 / 9 / 15 / 10;
+				grid-area: 14 / 8 / 15 / 9;
 			}
 			.div43 {
-				grid-area: 15 / 9 / 16 / 10;
+				grid-area: 15 / 8 / 16 / 9;
 			}
 			.div44 {
-				grid-area: 16 / 9 / 17 / 10;
+				grid-area: 16 / 8 / 17 / 9;
 			}
 		</style>
 
