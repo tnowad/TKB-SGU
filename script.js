@@ -234,8 +234,7 @@
 				grid-area: 16 / 8 / 17 / 9;
 			}
 		</style>
-
-	`
+		`
 	}
 
 	const getData = () => {
